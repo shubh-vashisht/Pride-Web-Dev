@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Route, Switch, Redirect } from "react-router-dom";
+import MainList from "./components/mainlist";
+import Comments from "./components/comments";
+import HomePage from "./components/Home";
+import _ from "lodash";
+import React from "react";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className="container">
+      <div>
+        <Switch />
+        <Route path="/posts" component={MainList} />
+        <Route path="/home" exact component={HomePage} />
+        <Route path="/comments" exact component={Comments} />
+        <Redirect from="/" to="home" />
+      </div>
+    </main>
   );
 }
 
